@@ -1,3 +1,59 @@
+const resultEl = document.getElementById("result");
+const lengthEl = document.getElementById("length");
+const uppercaseEl = document.getElementById("uppercase");
+const lowercaseEl = document.getElementById("lowercase");
+const numbersEl = document.getElementById("numbers");
+const symbolsEl = document.getElementById("symbols");
+const generateEl = document.getElementById("generate");
+const clipboardEl = document.getElementById("clipboard");
+
+generateEl.addEventListener("click", () => {
+  const length = +lengthEl.value; // the '+' converts string to number
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumber = numbersEl.checked;
+  const hasSymbol = symbolsEl.checked;
+
+  resultEl.innerText = generatePassword(
+    hasLower,
+    hasUpper,
+    hasNumber,
+    hasSymbol,
+    length
+  );
+});
+
+function generatePassword(lower, upper, number, symbol, length) {
+  let generatedPassword = "";
+  const typesCount = lower + upper + number + symbol;
+
+  //filter out false values based on whether 'checked' or not.
+  //if not checked, value = false
+  //Object.values() Returns an array containing the values that correspond to all of a given object's own enumerable string properties.
+  const typesArray = [{ lower }, { upper }, { number }, { symbol }].filter(
+    (item) => Object.values(item)[0]
+  );
+
+  //get a blank if everything is unchecked
+  if (typesCount === 0) {
+    return "";
+  }
+
+  for (let i = 0; i < length; i += typesCount) {
+    typesArray.forEach((type) => {
+      const funcName = Object.keys(type)[0]; //Object.keys() returns the property names, in this case from typesArray (lower, upper, number, symbol).
+
+      //append to generatedPassword randomFunction object where each property value = the propert name being called in funcName.
+      generatedPassword += randomFunction[funcName]();
+    });
+  }
+
+  const finalPassword = generatedPassword.slice(0, length); //returns eveything from index 0 to max password length set by user
+  console.log(finalPassword);
+
+  return finalPassword;
+}
+
 //gets a random lowercase letter
 //String.fromCharCode gets the letter's Code.
 // letter 'a' starts at 97, 'z' is 122
