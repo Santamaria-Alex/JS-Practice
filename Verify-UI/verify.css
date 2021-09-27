@@ -39,3 +39,10 @@ body {
   text-align: center;
   font-weight: 300;
 }
+
+/* this gets rid of the arrows inside the input fields to increase or decrease number */
+.code::-webkit-outer-spin-button,
+.code::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
