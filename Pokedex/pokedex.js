@@ -1,5 +1,7 @@
 const poke_container = document.getElementById("poke-container");
 const pokemon_count = 150;
+
+//set each pokemon type to a color
 const colors = {
   fire: "#FDDFDF",
   grass: "#DEFDE0",
@@ -18,6 +20,7 @@ const colors = {
 };
 
 //makes the colors into an object with properties
+//returns the keys (fire, grass, etc..)
 const main_types = Object.keys(colors);
 console.log(main_types);
 
@@ -33,7 +36,7 @@ const getPokemon = async (id) => {
   const res = await fetch(url);
   const data = await res.json();
   createPokemonCard(data);
-  //   console.log(data);
+  console.log(data);
 };
 
 const createPokemonCard = (pokemon) => {
@@ -47,11 +50,21 @@ const createPokemonCard = (pokemon) => {
   //ex: 001, 010, 100
   const id = pokemon.id.toString().padStart(3, "0");
 
-  const poke_types = pokemon.types.map((type) => type.type.name);
+  //get all the types of the pokemon
+  //some have more than one type
+  //types is an object, type is the key, name is the property
+  const poke_types = pokemon.types.map((types) => types.type.name);
   //   console.log(poke_types);
 
   //get the type
+  //The find() method returns the value of the first element in the provided array that satisfies the provided testing function.
+  //check to see if the indexOf is > (-1) bc if there isn't a match, indexOf returns a (-1)
   const type = main_types.find((type) => poke_types.indexOf(type) > -1);
+  //   console.log(type);
+
+  //color of the card based on type
+  const color = colors[type]; //colors come from the object we created
+  pokemonEl.style.backgroundColor = color;
 
   const pokemonInnerHTML = `
     <div class="img-container">
