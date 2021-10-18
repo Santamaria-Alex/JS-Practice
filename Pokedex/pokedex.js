@@ -1,4 +1,6 @@
 const poke_container = document.getElementById("poke-container");
+const search = document.getElementById("search").value;
+
 const pokemon_count = 150;
 
 //set each pokemon type to a color
@@ -36,7 +38,7 @@ const getPokemon = async (id) => {
   const res = await fetch(url);
   const data = await res.json();
   createPokemonCard(data);
-  console.log(data);
+  //   console.log(data);
 };
 
 const createPokemonCard = (pokemon) => {
