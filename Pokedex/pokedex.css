@@ -65,3 +65,11 @@ h1 {
   margin: 15px 0 7px;
   letter-spacing: 1px;
 }
+
+.user-list li.hide {
+  display: none;
+}
+
+.user-list {
+  list-style-type: none;
+}

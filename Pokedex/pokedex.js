@@ -1,7 +1,25 @@
 const poke_container = document.getElementById("poke-container");
-const search = document.getElementById("search").value;
+const search = document.getElementById("search");
+
+const result = document.getElementsByClassName("result");
+
+search.addEventListener("input", (event) => {
+  filterData(event.target.value);
+});
+
+function filterData(searchTerm) {
+  listItems.forEach((item) => {
+    if (item.innerText.toLowerCase().includes(searchTerm.toLowerCase())) {
+      item.classList.remove("hide");
+    } else {
+      item.classList.add("hide");
+    }
+  });
+}
 
 const pokemon_count = 150;
+
+const listItems = [];
 
 //set each pokemon type to a color
 const colors = {
