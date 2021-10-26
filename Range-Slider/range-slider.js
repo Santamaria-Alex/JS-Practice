@@ -18,8 +18,8 @@ range.addEventListener("input", (e) => {
   const max = +e.target.max;
   const min = +e.target.min;
 
+  //get the label to move with the thumb
   const left = value * (num_width / max) - num_label_width / 2;
-
   label.style.left = `${left}px`;
 
   console.log(range_width, label_width, num_width, num_label_width, max, min);
