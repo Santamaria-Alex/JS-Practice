@@ -23,3 +23,23 @@ function changeImage() {
 
   imgs.style.transform = `translateX(${-index * 500}px)`;
 }
+
+rightBtn.addEventListener("click", () => {
+  index++;
+
+  changeImage();
+  resetInterval();
+});
+
+leftBtn.addEventListener("click", () => {
+  index--;
+
+  changeImage();
+  resetInterval();
+});
+
+//this function resets the interval to have a better transition when clicking the buttons
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(run, 2000);
+}
