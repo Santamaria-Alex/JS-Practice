@@ -1,5 +1,8 @@
 const container = document.getElementById("container");
-const colors = ["red", "yellow", "green", "blue", "purple"];
+// const colors = ["red", "yellow", "green", "blue", "purple"];
+const colors =
+  "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
+console.log(colors);
 const SQUARES = 666;
 
 for (let i = 0; i < SQUARES; i++) {
@@ -15,8 +18,8 @@ for (let i = 0; i < SQUARES; i++) {
 function setColor(element) {
   console.log(element);
   const color = getRandomColor();
-  element.style.background = color;
-  element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
+  element.style.background = colors;
+  element.style.boxShadow = `0 0 2px ${colors}, 0 0 10px ${colors}`;
 }
 
 function removeColor(element) {
