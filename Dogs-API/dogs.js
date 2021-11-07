@@ -1,4 +1,5 @@
 const image = document.getElementById("dog");
+const btn = document.getElementById("btn");
 
 function getDogs() {
   fetch("https://dog.ceo/api/breeds/image/random")
@@ -10,7 +11,20 @@ function getDogs() {
       const dogImage = data.message;
 
       console.log(dogImage);
+
+      const img = document.createElement("img");
+      img.src = `${dogImage}`;
+      image.appendChild(img);
     });
 }
 
-getDogs();
+// getDogs();
+
+btn.addEventListener("click", getDogs);
+
+// btn.addEventListener("click", () => {
+//     for (let i = 0; i < rows; i++) {
+//       const img = document.createElement("img");
+//       img.src = `${unsplashURL}${getRandomSize()}`;
+//       container.appendChild(img);
+//     }

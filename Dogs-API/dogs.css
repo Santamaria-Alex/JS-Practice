@@ -12,3 +12,15 @@ body {
   overflow: hidden;
   margin: 0;
 }
+
+.container {
+  width: 400px;
+  height: 400px;
+  max-width: 90%;
+  margin: 10px 30px;
+}
+
+img {
+  object-fit: cover;
+  overflow: hidden;
+}
