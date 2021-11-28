@@ -42,7 +42,7 @@ const colors = {
 //makes the colors into an object with properties
 //returns the keys (fire, grass, etc..)
 const main_types = Object.keys(colors);
-console.log(main_types);
+// console.log(main_types);
 
 //gets pokemon data
 const fetchPokemons = async () => {
@@ -56,7 +56,7 @@ const getPokemon = async (id) => {
   const res = await fetch(url);
   const data = await res.json();
   createPokemonCard(data);
-  //   console.log(data);
+  console.log(data);
 };
 
 const createPokemonCard = (pokemon) => {
@@ -74,7 +74,7 @@ const createPokemonCard = (pokemon) => {
   //some have more than one type
   //types is an object, type is the key, name is the property
   const poke_types = pokemon.types.map((types) => types.type.name);
-  //   console.log(poke_types);
+  console.log(poke_types);
 
   //get the type
   //The find() method returns the value of the first element in the provided array that satisfies the provided testing function.
