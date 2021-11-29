@@ -1,7 +1,7 @@
-const container = document.getElementById("container");
-const btn = document.getElementById("btn");
-const search = document.getElementById("search");
+//https://dictionaryapi.dev/
 
+const container = document.getElementById("container");
+const search = document.getElementById("search");
 const test = document.getElementById("test");
 
 container.addEventListener("submit", (event) => {
