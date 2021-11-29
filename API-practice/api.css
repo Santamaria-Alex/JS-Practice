@@ -12,3 +12,16 @@ body {
   overflow: hidden;
   margin: 0;
 }
+
+header {
+  position: fixed;
+  top: 10px;
+}
+
+.test {
+  border-bottom: 1px solid black;
+  margin: 30px 15px;
+  font-size: large;
+  align-items: center;
+  text-align: center;
+}
