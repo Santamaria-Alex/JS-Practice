@@ -9,13 +9,7 @@
       rel="stylesheet"
     />
     <!-- Custom CSS -->
-    <style>
-      #map {
-        /* the width and height may be set to any size */
-        width: 100%;
-        height: 700px;
-      }
-    </style>
+    <link rel="stylesheet" href="mapbox.css" />
   </head>
   <body>
     <h1>My First Mapbox Map!</h1>
@@ -27,15 +21,6 @@
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
 
     <!-- Custom JS -->
-    <script>
-      mapboxgl.accessToken =
-        "pk.eyJ1Ijoic2FudGFtYXJpYTkzIiwiYSI6ImNrd3kzZjdlMTBoN2Qyb210MTJmMHQ5cW8ifQ.J9P4CmlfsCXpKL0QdRM6nw";
-      var map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/streets-v9",
-        zoom: 10,
-        center: [-98.4916, 29.4252],
-      });
-    </script>
+    <script src="mapbox.js"></script>
   </body>
 </html>
