@@ -24,3 +24,9 @@ function onDragEnd() {
 }
 
 marker.on("dragend", onDragEnd);
+
+//POPUP
+var popup = new mapboxgl.Popup()
+  .setLngLat([-98.489615, 29.426827])
+  .setHTML("<p>Codeup Rocks!</p>")
+  .addTo(map);
