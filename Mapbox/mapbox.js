@@ -73,6 +73,7 @@ function geocode(search, token) {
 
 ////////////REVERSE GEOCODING//////////////
 
+//we need this function to be able to use geocode
 function reverseGeocode(coordinates, token) {
   var baseUrl = "https://api.mapbox.com";
   var endPoint = "/geocoding/v5/mapbox.places/";
@@ -106,7 +107,7 @@ function reverseGeocode(coordinates, token) {
 // });
 
 var alamoInfo = {
-  address: "The Alamo",
+  address: "The Alamo San Antonio",
   popupHTML: "<p>Remember the Alamo!</p>",
 };
 
@@ -118,7 +119,16 @@ function placeMarkerAndPopup(info, token, map) {
       .addTo(map)
       .setPopup(popup);
     popup.addTo(map);
+
+    console.log(info);
   });
 }
 
 placeMarkerAndPopup(alamoInfo, accessToken, map);
+
+// var marker = new mapboxgl.Marker({
+//   color: "red",
+//   draggable: true,
+// })
+//   .setLngLat([-98.4916, 29.426])
+//   .addTo(map);
