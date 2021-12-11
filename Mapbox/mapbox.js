@@ -1,4 +1,6 @@
 const coordinates = document.getElementById("coordinates");
+const search = document.getElementById("search");
+const form = document.getElementById("form");
 const accessToken =
   "pk.eyJ1Ijoic2FudGFtYXJpYTkzIiwiYSI6ImNrd3kzZjdlMTBoN2Qyb210MTJmMHQ5cW8ifQ.J9P4CmlfsCXpKL0QdRM6nw";
 
@@ -118,7 +120,7 @@ function placeMarkerAndPopup(info, token, map) {
       .setLngLat(coordinates)
       .addTo(map)
       .setPopup(popup);
-    popup.addTo(map);
+    // popup.addTo(map);
 
     console.log(info);
   });
@@ -126,9 +128,17 @@ function placeMarkerAndPopup(info, token, map) {
 
 placeMarkerAndPopup(alamoInfo, accessToken, map);
 
-// var marker = new mapboxgl.Marker({
-//   color: "red",
-//   draggable: true,
-// })
-//   .setLngLat([-98.4916, 29.426])
-//   .addTo(map);
+///////////
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const searchInput = search.value;
+
+  console.log(searchInput);
+
+  geocode(`${searchInput}`, accessToken).then(function (result) {
+    console.log(result);
+    map.setCenter(result);
+    map.setZoom(15);
+  });
+});
