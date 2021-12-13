@@ -113,32 +113,56 @@ var alamoInfo = {
   popupHTML: "<p>Remember the Alamo!</p>",
 };
 
-function placeMarkerAndPopup(info, token, map) {
-  geocode(info.address, token).then(function (coordinates) {
-    var popup = new mapboxgl.Popup().setHTML(info.popupHTML);
-    var marker = new mapboxgl.Marker()
-      .setLngLat(coordinates)
-      .addTo(map)
-      .setPopup(popup);
-    // popup.addTo(map);
+// function placeMarkerAndPopup(info, token, map) {
+//   geocode(info.address, token).then(function (coordinates) {
+//     var popup = new mapboxgl.Popup().setHTML(info.popupHTML);
+//     var marker = new mapboxgl.Marker()
+//       .setLngLat(coordinates)
+//       .addTo(map)
+//       .setPopup(popup);
+//     // popup.addTo(map);
 
-    console.log(info);
-  });
-}
+//     console.log(info);
+//   });
+// }
 
-placeMarkerAndPopup(alamoInfo, accessToken, map);
+// placeMarkerAndPopup(alamoInfo, accessToken, map);
 
-///////////
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+///////////event listener
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  const searchInput = search.value;
+//   const searchInput = search.value;
 
-  console.log(searchInput);
+//   console.log(searchInput);
 
-  geocode(`${searchInput}`, accessToken).then(function (result) {
-    console.log(result);
-    map.setCenter(result);
-    map.setZoom(15);
-  });
-});
+//   function placeMarkerAndPopup(info, token, map) {
+//     geocode(`${searchInput}`, token).then(function (coordinates) {
+//       var popup = new mapboxgl.Popup().setHTML(`${searchInput}`);
+//       var marker = new mapboxgl.Marker()
+//         .setLngLat(coordinates)
+//         .addTo(map)
+//         .setPopup(popup);
+//       popup.addTo(map);
+//       map.setCenter(coordinates);
+//       map.setZoom(8);
+
+//       console.log(coordinates);
+//     });
+//   }
+
+//   placeMarkerAndPopup(`${searchInput}`, accessToken, map);
+// });
+
+// geocode(`${searchInput}`, accessToken).then(function (result) {
+//   console.log(result);
+//   map.setCenter(result);
+//   map.setZoom(15);
+// });
+
+map.addControl(
+  new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+  })
+);

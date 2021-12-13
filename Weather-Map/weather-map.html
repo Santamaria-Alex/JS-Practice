@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="weather-map.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>Weather App</header>
+
+    <form id="form">
+      <input type="text" id="search" placeholder="Enter City or Location" />
+      <button>Search</button>
+    </form>
+
+    <div class="container">
+      <div class="info-container">
+        <h3 id="date">Date</h3>
+        <p id="temp">Temp</p>
+        <p id="icon">Icon</p>
+        <p id="desc">Description:</p>
+        <p id="humi">Humidity:</p>
+        <p id="wind">Wind:</p>
+        <p id="pres">Pressure:</p>
+      </div>
+    </div>
+
+    <div id="map"></div>
+    <pre id="coordinates" class="coordinates"></pre>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="weather-map.js"></script>
+  </body>
+</html>
