@@ -26,10 +26,16 @@ header {
 
 .container {
   margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 #map {
   /* the width and height may be set to any size */
   width: 95%;
   height: 50%;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
 }

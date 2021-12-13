@@ -4,10 +4,10 @@ const coordinates = document.getElementById("coordinates");
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
 const icon = document.getElementById("icon");
-const description = document.getElementById("desc");
-const humidty = document.getElementById("humi");
+const desc = document.getElementById("desc");
+const humi = document.getElementById("humi");
 const wind = document.getElementById("wind");
-const pressure = document.getElementById("pres");
+const pres = document.getElementById("pres");
 
 const days = 5;
 
@@ -25,13 +25,12 @@ var map = new mapboxgl.Map({
 });
 
 //request for san antonio weather
-$.get("http://api.openweathermap.org/data/2.5/weather", {
-  APPID: OPEN_WEATHER_APPID,
-  q: "San Antonio, US",
-  units: "imperial",
-}).done(function (data) {
-  console.log(data);
-});
+// $.get("http://api.openweathermap.org/data/2.5/weather", {
+//   APPID: OPEN_WEATHER_APPID,
+//   q: "San Antonio, US",
+// }).done(function (data) {
+//   console.log(data);
+// });
 
 $.get("http://api.openweathermap.org/data/2.5/onecall", {
   APPID: OPEN_WEATHER_APPID,
@@ -42,7 +41,13 @@ $.get("http://api.openweathermap.org/data/2.5/onecall", {
   console.log("The entire response:", data);
   console.log("Diving in - here is current information: ", data.current);
   console.log("A step further - information for tomorrow: ", data.daily[1]);
-  console.log(data.date);
+  console.log(data);
 
   //   date.innerHTML = data.
+  temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
+  icon.innerHTML = data.current.weather[0].icon;
+  desc.innerHTML = `Description: ${data.current.weather[0].description}`;
+  humi.innerHTML = `Humidity: ${data.current.humidity}`;
+  wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
+  pres.innerHTML = `Pressure: ${data.current.pressure}`;
 });
