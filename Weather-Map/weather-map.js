@@ -1,6 +1,9 @@
 const OPEN_WEATHER_APPID = "6d7e5c317c7a39094e4ccf1e9b2d9297";
 const coordinates = document.getElementById("coordinates");
 
+const form = document.getElementById("form");
+const search = document.getElementById("search");
+
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
 const icon = document.getElementById("icon");
@@ -50,4 +53,12 @@ $.get("http://api.openweathermap.org/data/2.5/onecall", {
   humi.innerHTML = `Humidity: ${data.current.humidity}`;
   wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
   pres.innerHTML = `Pressure: ${data.current.pressure}`;
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const searchInput = search.value;
+
+  console.log(searchInput);
 });
