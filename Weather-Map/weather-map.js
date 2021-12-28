@@ -31,34 +31,63 @@ var map = new mapboxgl.Map({
 // $.get("http://api.openweathermap.org/data/2.5/weather", {
 //   APPID: OPEN_WEATHER_APPID,
 //   q: "San Antonio, US",
+//   units: "imperial",
 // }).done(function (data) {
 //   console.log(data);
 // });
 
-$.get("http://api.openweathermap.org/data/2.5/onecall", {
-  APPID: OPEN_WEATHER_APPID,
-  lat: 29.423017,
-  lon: -98.48527,
-  units: "imperial",
-}).done(function (data) {
-  console.log("The entire response:", data);
-  console.log("Diving in - here is current information: ", data.current);
-  console.log("A step further - information for tomorrow: ", data.daily[1]);
-  console.log(data);
+// $.get("http://api.openweathermap.org/data/2.5/onecall", {
+//   APPID: OPEN_WEATHER_APPID,
+//   lat: `${lat}`,
+//   lon: `${lon}`,
+//   units: "imperial",
+// }).done(function (data) {
+//   console.log("The entire response:", data);
+//   //   console.log("Diving in - here is current information: ", data.current);
+//   //   console.log("A step further - information for tomorrow: ", data.daily[1]);
+//   //   console.log(data);
 
-  //   date.innerHTML = data.
-  temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
-  icon.innerHTML = data.current.weather[0].icon;
-  desc.innerHTML = `Description: ${data.current.weather[0].description}`;
-  humi.innerHTML = `Humidity: ${data.current.humidity}`;
-  wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
-  pres.innerHTML = `Pressure: ${data.current.pressure}`;
-});
+//   temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
+//   icon.innerHTML = data.current.weather[0].icon;
+//   desc.innerHTML = `Description: ${data.current.weather[0].description}`;
+//   humi.innerHTML = `Humidity: ${data.current.humidity}`;
+//   wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
+//   pres.innerHTML = `Pressure: ${data.current.pressure}`;
+// });
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const searchInput = search.value;
 
   console.log(searchInput);
+
+  $.get("http://api.openweathermap.org/data/2.5/weather", {
+    APPID: OPEN_WEATHER_APPID,
+    q: `${searchInput}`,
+    units: "imperial",
+  }).done(function (data) {
+    console.log(data);
+    var lat = data.coord.lat;
+    var lon = data.coord.lon;
+
+    ///////////////////////////////////////
+    $.get("http://api.openweathermap.org/data/2.5/onecall", {
+      APPID: OPEN_WEATHER_APPID,
+      lat: `${lat}`,
+      lon: `${lon}`,
+      units: "imperial",
+    }).done(function (data) {
+      console.log("The entire response:", data);
+      //   console.log("Diving in - here is current information: ", data.current);
+      //   console.log("A step further - information for tomorrow: ", data.daily[1]);
+      //   console.log(data);
+
+      temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
+      icon.innerHTML = data.current.weather[0].icon;
+      desc.innerHTML = `Description: ${data.current.weather[0].description}`;
+      humi.innerHTML = `Humidity: ${data.current.humidity}`;
+      wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
+      pres.innerHTML = `Pressure: ${data.current.pressure}`;
+    });
+  });
 });
