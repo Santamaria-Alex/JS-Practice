@@ -107,6 +107,6 @@ form.addEventListener("submit", (event) => {
   geocode(`${inputValue}`, accessToken).then(function (result) {
     console.log(result);
     map.setCenter(result);
-    map.setZoom(7);
+    map.setZoom(9);
   });
 });
