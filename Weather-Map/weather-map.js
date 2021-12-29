@@ -3,6 +3,7 @@ const coordinates = document.getElementById("coordinates");
 
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const city = document.getElementById("city");
 
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
@@ -60,6 +61,7 @@ form.addEventListener("submit", (event) => {
     console.log(data);
     const lat = data.coord.lat;
     const lon = data.coord.lon;
+    city.innerHTML = `${data.name}`;
 
     $.get("http://api.openweathermap.org/data/2.5/onecall", {
       APPID: OPEN_WEATHER_APPID,
