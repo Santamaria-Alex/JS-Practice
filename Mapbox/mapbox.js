@@ -129,40 +129,40 @@ var alamoInfo = {
 // placeMarkerAndPopup(alamoInfo, accessToken, map);
 
 ///////////event listener
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-//   const searchInput = search.value;
+  const searchInput = search.value;
 
-//   console.log(searchInput);
+  console.log(searchInput);
 
-//   function placeMarkerAndPopup(info, token, map) {
-//     geocode(`${searchInput}`, token).then(function (coordinates) {
-//       var popup = new mapboxgl.Popup().setHTML(`${searchInput}`);
-//       var marker = new mapboxgl.Marker()
-//         .setLngLat(coordinates)
-//         .addTo(map)
-//         .setPopup(popup);
-//       popup.addTo(map);
-//       map.setCenter(coordinates);
-//       map.setZoom(8);
+  function placeMarkerAndPopup(info, token, map) {
+    geocode(`${searchInput}`, token).then(function (coordinates) {
+      var popup = new mapboxgl.Popup().setHTML(`${searchInput}`);
+      var marker = new mapboxgl.Marker()
+        .setLngLat(coordinates)
+        .addTo(map)
+        .setPopup(popup);
+      popup.addTo(map);
+      map.setCenter(coordinates);
+      map.setZoom(8);
 
-//       console.log(coordinates);
-//     });
-//   }
+      console.log(coordinates);
+    });
+  }
 
-//   placeMarkerAndPopup(`${searchInput}`, accessToken, map);
-// });
+  placeMarkerAndPopup(`${searchInput}`, accessToken, map);
+});
 
-// geocode(`${searchInput}`, accessToken).then(function (result) {
-//   console.log(result);
-//   map.setCenter(result);
-//   map.setZoom(15);
-// });
+geocode(`${searchInput}`, accessToken).then(function (result) {
+  console.log(result);
+  map.setCenter(result);
+  map.setZoom(15);
+});
 
-map.addControl(
-  new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl,
-  })
-);
+// map.addControl(
+//   new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken,
+//     mapboxgl: mapboxgl,
+//   })
+// );

@@ -32,6 +32,7 @@ header {
   border-radius: 5px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
   background-color: rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 #map {
@@ -39,4 +40,10 @@ header {
   width: 95%;
   height: 50%;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
