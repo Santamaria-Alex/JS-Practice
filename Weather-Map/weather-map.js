@@ -22,11 +22,11 @@ const days = 5;
 // console.log(currentDate);
 
 //loop through CONST DAYS to get 5 total dates
-for (i = 0; i < days; i++) {
-  let currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() + i);
-  console.log(currentDate.toString().split(" ").splice(0, 4).join(" "));
-}
+// for (i = 0; i < days; i++) {
+//   let currentDate = new Date();
+//   currentDate.setDate(currentDate.getDate() + i);
+//   console.log(currentDate.toString().split(" ").splice(0, 4).join(" "));
+// }
 
 const accessToken =
   "pk.eyJ1Ijoic2FudGFtYXJpYTkzIiwiYSI6ImNrd3kzZjdlMTBoN2Qyb210MTJmMHQ5cW8ifQ.J9P4CmlfsCXpKL0QdRM6nw";
@@ -68,7 +68,7 @@ form.addEventListener("submit", (event) => {
   console.log(inputValue);
 
   for (let i = 0; i < days; i++) {
-    //get 5 total days
+    //get 5 total dates
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + i);
 
@@ -99,6 +99,11 @@ form.addEventListener("submit", (event) => {
           "A step further - information for tomorrow: ",
           data2.daily[1]
         );
+
+        //daily min and max temp
+        const tempH2 = data2.daily[i].temp.max;
+        const tempL2 = data2.daily[i].temp.min;
+
         //   console.log(data);
         const description = data2.current.weather[0].description;
 
@@ -128,7 +133,7 @@ form.addEventListener("submit", (event) => {
           .splice(0, 4)
           .join(" ")}</h3>
         <div class="info-container">
-          <p id="temp" class="temp">H:${tempH}\u00B0F / L:${tempL}\u00B0F</p>
+          <p id="temp" class="temp">H:${tempH2}\u00B0F / L:${tempL2}\u00B0F</p>
           <div class="hideIcon" id="hideIcon">
             <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="">
           </div>
