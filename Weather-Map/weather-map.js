@@ -83,8 +83,7 @@ form.addEventListener("submit", (event) => {
       const lon = data.coord.lon;
       city.innerHTML = `${data.name}`;
       hideContainer.classList.remove("hideContainer");
-      const tempH = data.main.temp_max;
-      const tempL = data.main.temp_max;
+
       //   temp.innerHTML = `H:${data.main.temp_max}\u00B0F / L:${data.main.temp_min}\u00B0F`;
 
       $.get("http://api.openweathermap.org/data/2.5/onecall", {
@@ -95,10 +94,10 @@ form.addEventListener("submit", (event) => {
       }).done(function (data2) {
         console.log("The entire response:", data2);
         //   console.log("Diving in - here is current information: ", data.current);
-        console.log(
-          "A step further - information for tomorrow: ",
-          data2.daily[1]
-        );
+        // console.log(
+        //   "A step further - information for tomorrow: ",
+        //   data2.daily[1]
+        // );
 
         //daily min and max temp
         const tempH2 = data2.daily[i].temp.max;
@@ -108,7 +107,9 @@ form.addEventListener("submit", (event) => {
         const description = data2.current.weather[0].description;
 
         // date.innerHTML = `${currentDate}`;
-        const weatherIcon = data2.current.weather[0].icon;
+
+        const weatherIcon2 = data2.daily[i].weather[0].icon;
+
         //     icon.innerHTML = `<img
         //   src="http://openweathermap.org/img/w/${weatherIcon}.png"
         //   alt=""
@@ -135,7 +136,7 @@ form.addEventListener("submit", (event) => {
         <div class="info-container">
           <p id="temp" class="temp">H:${tempH2}\u00B0F / L:${tempL2}\u00B0F</p>
           <div class="hideIcon" id="hideIcon">
-            <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="">
+            <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon2}.png" alt="">
           </div>
           <p id="desc" class="desc">${desc2}</p>
           <p id="humi">Humidity:${humi2}</p>
