@@ -4,6 +4,8 @@ const coordinates = document.getElementById("coordinates");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const city = document.getElementById("city");
+const hideIcon = document.getElementById("hideIcon");
+const hideContainer = document.getElementById("hideContainer");
 
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
@@ -12,6 +14,9 @@ const desc = document.getElementById("desc");
 const humi = document.getElementById("humi");
 const wind = document.getElementById("wind");
 const pres = document.getElementById("pres");
+
+let currentDate = new Date().toString().split(" ").splice(0, 4).join(" ");
+console.log(currentDate);
 
 const accessToken =
   "pk.eyJ1Ijoic2FudGFtYXJpYTkzIiwiYSI6ImNrd3kzZjdlMTBoN2Qyb210MTJmMHQ5cW8ifQ.J9P4CmlfsCXpKL0QdRM6nw";
@@ -62,6 +67,7 @@ form.addEventListener("submit", (event) => {
     const lat = data.coord.lat;
     const lon = data.coord.lon;
     city.innerHTML = `${data.name}`;
+    hideContainer.classList.remove("hideContainer");
 
     $.get("http://api.openweathermap.org/data/2.5/onecall", {
       APPID: OPEN_WEATHER_APPID,
@@ -73,15 +79,18 @@ form.addEventListener("submit", (event) => {
       //   console.log("Diving in - here is current information: ", data.current);
       //   console.log("A step further - information for tomorrow: ", data.daily[1]);
       //   console.log(data);
+      const description = data.current.weather[0].description;
 
+      date.innerHTML = `${currentDate}`;
       temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
       const weatherIcon = data.current.weather[0].icon;
-
       icon.innerHTML = `<img
       src="http://openweathermap.org/img/w/${weatherIcon}.png"
       alt=""
       />`;
-      desc.innerHTML = `Description: ${data.current.weather[0].description}`;
+      desc.innerHTML = `${description
+        .charAt(0)
+        .toUpperCase()}${description.slice(1)}`;
       humi.innerHTML = `Humidity: ${data.current.humidity}`;
       wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
       pres.innerHTML = `Pressure: ${data.current.pressure}`;

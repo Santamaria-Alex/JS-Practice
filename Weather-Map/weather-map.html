@@ -18,19 +18,23 @@
     </header>
 
     <form id="form">
-      <input type="text" id="search" placeholder="Enter City or Location" />
+      <input type="text" id="search" class="search" placeholder="Enter City" />
       <button>Search</button>
     </form>
 
-    <div class="container">
-      <div class="info-container">
-        <h3 id="date">Date</h3>
-        <p id="temp">Temp</p>
-        <p id="icon" class="icon">Icon</p>
-        <p id="desc">Description:</p>
-        <p id="humi">Humidity:</p>
-        <p id="wind">Wind:</p>
-        <p id="pres">Pressure:</p>
+    <div class="hideContainer" id="hideContainer">
+      <div class="container">
+        <h3 id="date" class="date">Date</h3>
+        <div class="info-container">
+          <p id="temp" class="temp">Temp</p>
+          <div class="hideIcon" id="hideIcon">
+            <p id="icon" class="icon">Icon</p>
+          </div>
+          <p id="desc" class="desc">Description:</p>
+          <p id="humi">Humidity:</p>
+          <p id="wind">Wind:</p>
+          <p id="pres">Pressure:</p>
+        </div>
       </div>
     </div>
 
