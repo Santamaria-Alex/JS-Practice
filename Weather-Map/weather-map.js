@@ -103,9 +103,6 @@ form.addEventListener("submit", (event) => {
         const tempH2 = data2.daily[i].temp.max;
         const tempL2 = data2.daily[i].temp.min;
 
-        //   console.log(data);
-        const description = data2.current.weather[0].description;
-
         // date.innerHTML = `${currentDate}`;
 
         const weatherIcon2 = data2.daily[i].weather[0].icon;
@@ -114,9 +111,12 @@ form.addEventListener("submit", (event) => {
         //   src="http://openweathermap.org/img/w/${weatherIcon}.png"
         //   alt=""
         //   />`;
-        const desc2 = `${description
+
+        const description2 = data2.daily[i].weather[0].description;
+
+        const desc2 = `${description2
           .charAt(0)
-          .toUpperCase()}${description.slice(1)}`;
+          .toUpperCase()}${description2.slice(1)}`;
         // desc.innerHTML = `${description
         //   .charAt(0)
         //   .toUpperCase()}${description.slice(1)}`;
