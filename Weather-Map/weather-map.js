@@ -18,8 +18,15 @@ const pres = document.getElementById("pres");
 
 const days = 5;
 
-let currentDate = new Date().toString().split(" ").splice(0, 4).join(" ");
-console.log(currentDate);
+// let currentDate = new Date().toString().split(" ").splice(0, 4).join(" ");
+// console.log(currentDate);
+
+//loop through CONST DAYS to get 5 total dates
+for (i = 0; i < days; i++) {
+  let currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + i);
+  console.log(currentDate.toString().split(" ").splice(0, 4).join(" "));
+}
 
 const accessToken =
   "pk.eyJ1Ijoic2FudGFtYXJpYTkzIiwiYSI6ImNrd3kzZjdlMTBoN2Qyb210MTJmMHQ5cW8ifQ.J9P4CmlfsCXpKL0QdRM6nw";
@@ -61,6 +68,10 @@ form.addEventListener("submit", (event) => {
   console.log(inputValue);
 
   for (let i = 0; i < days; i++) {
+    //get 5 total days
+    let currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + i);
+
     //request for san antonio weather
     $.get("http://api.openweathermap.org/data/2.5/weather", {
       APPID: OPEN_WEATHER_APPID,
@@ -84,7 +95,10 @@ form.addEventListener("submit", (event) => {
       }).done(function (data2) {
         console.log("The entire response:", data2);
         //   console.log("Diving in - here is current information: ", data.current);
-        //   console.log("A step further - information for tomorrow: ", data.daily[1]);
+        console.log(
+          "A step further - information for tomorrow: ",
+          data2.daily[1]
+        );
         //   console.log(data);
         const description = data2.current.weather[0].description;
 
@@ -108,7 +122,11 @@ form.addEventListener("submit", (event) => {
         // pres.innerHTML = `Pressure: ${data.current.pressure}`;
 
         const weatherInnerHtml = `
-        <h3 id="date" class="date">${currentDate}</h3>
+        <h3 id="date" class="date">${currentDate
+          .toString()
+          .split(" ")
+          .splice(0, 4)
+          .join(" ")}</h3>
         <div class="info-container">
           <p id="temp" class="temp">H:${tempH}\u00B0F / L:${tempL}\u00B0F</p>
           <div class="hideIcon" id="hideIcon">
