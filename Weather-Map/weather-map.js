@@ -6,6 +6,7 @@ const search = document.getElementById("search");
 const city = document.getElementById("city");
 const hideIcon = document.getElementById("hideIcon");
 const hideContainer = document.getElementById("hideContainer");
+const container = document.getElementById("container");
 
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
@@ -14,6 +15,8 @@ const desc = document.getElementById("desc");
 const humi = document.getElementById("humi");
 const wind = document.getElementById("wind");
 const pres = document.getElementById("pres");
+
+const days = 5;
 
 let currentDate = new Date().toString().split(" ").splice(0, 4).join(" ");
 console.log(currentDate);
@@ -57,45 +60,74 @@ form.addEventListener("submit", (event) => {
   const inputValue = search.value;
   console.log(inputValue);
 
-  //request for san antonio weather
-  $.get("http://api.openweathermap.org/data/2.5/weather", {
-    APPID: OPEN_WEATHER_APPID,
-    q: `${inputValue}`,
-    units: "imperial",
-  }).done(function (data) {
-    console.log(data);
-    const lat = data.coord.lat;
-    const lon = data.coord.lon;
-    city.innerHTML = `${data.name}`;
-    hideContainer.classList.remove("hideContainer");
-
-    $.get("http://api.openweathermap.org/data/2.5/onecall", {
+  for (let i = 0; i < days; i++) {
+    //request for san antonio weather
+    $.get("http://api.openweathermap.org/data/2.5/weather", {
       APPID: OPEN_WEATHER_APPID,
-      lat: `${lat}`,
-      lon: `${lon}`,
+      q: `${inputValue}`,
       units: "imperial",
     }).done(function (data) {
-      console.log("The entire response:", data);
-      //   console.log("Diving in - here is current information: ", data.current);
-      //   console.log("A step further - information for tomorrow: ", data.daily[1]);
-      //   console.log(data);
-      const description = data.current.weather[0].description;
+      console.log(data);
+      const lat = data.coord.lat;
+      const lon = data.coord.lon;
+      city.innerHTML = `${data.name}`;
+      hideContainer.classList.remove("hideContainer");
+      const tempH = data.main.temp_max;
+      const tempL = data.main.temp_max;
+      //   temp.innerHTML = `H:${data.main.temp_max}\u00B0F / L:${data.main.temp_min}\u00B0F`;
 
-      date.innerHTML = `${currentDate}`;
-      temp.innerHTML = `Temperature: ${data.current.temp}\u00B0 F`;
-      const weatherIcon = data.current.weather[0].icon;
-      icon.innerHTML = `<img
-      src="http://openweathermap.org/img/w/${weatherIcon}.png"
-      alt=""
-      />`;
-      desc.innerHTML = `${description
-        .charAt(0)
-        .toUpperCase()}${description.slice(1)}`;
-      humi.innerHTML = `Humidity: ${data.current.humidity}`;
-      wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
-      pres.innerHTML = `Pressure: ${data.current.pressure}`;
+      $.get("http://api.openweathermap.org/data/2.5/onecall", {
+        APPID: OPEN_WEATHER_APPID,
+        lat: `${lat}`,
+        lon: `${lon}`,
+        units: "imperial",
+      }).done(function (data2) {
+        console.log("The entire response:", data2);
+        //   console.log("Diving in - here is current information: ", data.current);
+        //   console.log("A step further - information for tomorrow: ", data.daily[1]);
+        //   console.log(data);
+        const description = data2.current.weather[0].description;
+
+        // date.innerHTML = `${currentDate}`;
+        const weatherIcon = data2.current.weather[0].icon;
+        //     icon.innerHTML = `<img
+        //   src="http://openweathermap.org/img/w/${weatherIcon}.png"
+        //   alt=""
+        //   />`;
+        const desc2 = `${description
+          .charAt(0)
+          .toUpperCase()}${description.slice(1)}`;
+        // desc.innerHTML = `${description
+        //   .charAt(0)
+        //   .toUpperCase()}${description.slice(1)}`;
+        const humi2 = data2.current.humidity;
+        // humi.innerHTML = `Humidity: ${data.current.humidity}`;
+        const wind2 = data2.current.wind_speed;
+        // wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
+        const pres2 = data2.current.pressure;
+        // pres.innerHTML = `Pressure: ${data.current.pressure}`;
+
+        const weatherInnerHtml = `
+        <h3 id="date" class="date">${currentDate}</h3>
+        <div class="info-container">
+          <p id="temp" class="temp">H:${tempH}\u00B0F / L:${tempL}\u00B0F</p>
+          <div class="hideIcon" id="hideIcon">
+            <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="">
+          </div>
+          <p id="desc" class="desc">${desc2}</p>
+          <p id="humi">Humidity:${humi2}</p>
+          <p id="wind">Wind:${wind2}</p>
+          <p id="pres">Pressure:${pres2}</p>
+        </div>
+        `;
+
+        const weatherEl = document.createElement("div");
+        weatherEl.innerHTML = weatherInnerHtml;
+
+        container.appendChild(weatherEl);
+      });
     });
-  });
+  }
 
   function placeMarkerAndPopup(info, token, map) {
     geocode(`${inputValue}`, token).then(function (coordinates) {
