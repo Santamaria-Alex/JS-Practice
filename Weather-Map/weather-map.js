@@ -6,7 +6,7 @@ const search = document.getElementById("search");
 const city = document.getElementById("city");
 const hideIcon = document.getElementById("hideIcon");
 const hideContainer = document.getElementById("hideContainer");
-const container = document.getElementById("container");
+const container = document.getElementsByClassName("container");
 
 const date = document.getElementById("date");
 const temp = document.getElementById("temp");
@@ -65,7 +65,6 @@ function geocode(search, token) {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const inputValue = search.value;
-  console.log(inputValue);
 
   for (let i = 0; i < days; i++) {
     //get 5 total dates
@@ -78,13 +77,11 @@ form.addEventListener("submit", (event) => {
       q: `${inputValue}`,
       units: "imperial",
     }).done(function (data) {
-      console.log(data);
+      //   console.log(data);
       const lat = data.coord.lat;
       const lon = data.coord.lon;
       city.innerHTML = `${data.name}`;
       hideContainer.classList.remove("hideContainer");
-
-      //   temp.innerHTML = `H:${data.main.temp_max}\u00B0F / L:${data.main.temp_min}\u00B0F`;
 
       $.get("http://api.openweathermap.org/data/2.5/onecall", {
         APPID: OPEN_WEATHER_APPID,
@@ -92,7 +89,7 @@ form.addEventListener("submit", (event) => {
         lon: `${lon}`,
         units: "imperial",
       }).done(function (data2) {
-        console.log("The entire response:", data2);
+        // console.log("The entire response:", data2);
         //   console.log("Diving in - here is current information: ", data.current);
         // console.log(
         //   "A step further - information for tomorrow: ",
@@ -102,53 +99,45 @@ form.addEventListener("submit", (event) => {
         //daily min and max temp
         const tempH2 = data2.daily[i].temp.max;
         const tempL2 = data2.daily[i].temp.min;
-
-        // date.innerHTML = `${currentDate}`;
-
         const weatherIcon2 = data2.daily[i].weather[0].icon;
-
-        //     icon.innerHTML = `<img
-        //   src="http://openweathermap.org/img/w/${weatherIcon}.png"
-        //   alt=""
-        //   />`;
-
         const description2 = data2.daily[i].weather[0].description;
-
         const desc2 = `${description2
           .charAt(0)
           .toUpperCase()}${description2.slice(1)}`;
-        // desc.innerHTML = `${description
-        //   .charAt(0)
-        //   .toUpperCase()}${description.slice(1)}`;
         const humi2 = data2.daily[i].humidity;
-        // humi.innerHTML = `Humidity: ${data.current.humidity}`;
         const wind2 = data2.daily[i].wind_speed;
-        // wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
         const pres2 = data2.daily[i].pressure;
-        // pres.innerHTML = `Pressure: ${data.current.pressure}`;
+        //card
 
         const weatherInnerHtml = `
+        <div>
+
         <h3 id="date" class="date">${currentDate
           .toString()
           .split(" ")
-          .splice(0, 4)
+          .splice(0, 3)
           .join(" ")}</h3>
         <div class="info-container">
           <p id="temp" class="temp">H:${tempH2}\u00B0F / L:${tempL2}\u00B0F</p>
-          <div class="hideIcon" id="hideIcon">
+          <div>
             <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon2}.png" alt="">
           </div>
           <p id="desc" class="desc">${desc2}</p>
+          <div class="xs">
           <p id="humi">Humidity:${humi2}</p>
           <p id="wind">Wind:${wind2}</p>
           <p id="pres">Pressure:${pres2}</p>
+          </div>
+
+        </div>
         </div>
         `;
 
         const weatherEl = document.createElement("div");
+        weatherEl.classList.add("container");
         weatherEl.innerHTML = weatherInnerHtml;
 
-        container.appendChild(weatherEl);
+        hideContainer.appendChild(weatherEl);
       });
     });
   }
@@ -164,15 +153,22 @@ form.addEventListener("submit", (event) => {
       map.setCenter(coordinates);
       map.setZoom(8);
 
-      console.log(coordinates);
+      //   console.log(coordinates);
     });
   }
+
+  //   function onDragEnd() {
+  //     const lngLat = marker.getLngLat();
+  //     lat.lngLat.lat;
+  //     lon.lngLat.lon;
+  //     // coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+  //   }
 
   placeMarkerAndPopup(`${inputValue}`, accessToken, map);
   // });
 
   geocode(`${inputValue}`, accessToken).then(function (result) {
-    console.log(result);
+    // console.log(result);
     map.setCenter(result);
     map.setZoom(9);
   });
