@@ -120,11 +120,11 @@ form.addEventListener("submit", (event) => {
         // desc.innerHTML = `${description
         //   .charAt(0)
         //   .toUpperCase()}${description.slice(1)}`;
-        const humi2 = data2.current.humidity;
+        const humi2 = data2.daily[i].humidity;
         // humi.innerHTML = `Humidity: ${data.current.humidity}`;
-        const wind2 = data2.current.wind_speed;
+        const wind2 = data2.daily[i].wind_speed;
         // wind.innerHTML = `Wind Speed: ${data.current.wind_speed}`;
-        const pres2 = data2.current.pressure;
+        const pres2 = data2.daily[i].pressure;
         // pres.innerHTML = `Pressure: ${data.current.pressure}`;
 
         const weatherInnerHtml = `
