@@ -77,7 +77,7 @@ form.addEventListener("submit", (event) => {
       q: `${inputValue}`,
       units: "imperial",
     }).done(function (data) {
-      //   console.log(data);
+      // console.log(data);
       const lat = data.coord.lat;
       const lon = data.coord.lon;
       city.innerHTML = `${data.name}`;
@@ -107,8 +107,8 @@ form.addEventListener("submit", (event) => {
         const humi2 = data2.daily[i].humidity;
         const wind2 = data2.daily[i].wind_speed;
         const pres2 = data2.daily[i].pressure;
-        //card
 
+        //card
         const weatherInnerHtml = `
         <div>
 
@@ -118,15 +118,15 @@ form.addEventListener("submit", (event) => {
           .splice(0, 3)
           .join(" ")}</h3>
         <div class="info-container">
-          <p id="temp" class="temp">H:${tempH2}\u00B0F / L:${tempL2}\u00B0F</p>
+          <p id="temp" class="temp">H:${tempH2}\u00B0F / <br> L:${tempL2}\u00B0F</p>
           <div>
             <img id="icon" class="icon" src="http://openweathermap.org/img/w/${weatherIcon2}.png" alt="">
           </div>
           <p id="desc" class="desc">${desc2}</p>
           <div class="xs">
           <p id="humi">Humidity:${humi2}</p>
-          <p id="wind">Wind:${wind2}</p>
-          <p id="pres">Pressure:${pres2}</p>
+          <p id="wind" class="wind">Wind:${wind2}</p>
+          <p id="pres" class="pres">Pressure:${pres2}</p>
           </div>
 
         </div>

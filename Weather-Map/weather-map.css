@@ -123,16 +123,13 @@ img.icon {
   max-height: 338px;
 }
 
-/* Extra small devices (phones, 600px and down)
-@media only screen and (max-width: 600px) {
-  .fix {
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    max-height: 500px;
-  }
-
-  .xs {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 1025px) {
+  .wind {
     display: none;
   }
-} */
+
+  .pres {
+    display: none;
+  }
+}
