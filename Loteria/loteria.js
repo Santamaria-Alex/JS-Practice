@@ -4,6 +4,7 @@ const cards = [
   {
     id: 1,
     name: "El Gallo",
+    photo: "../img/Gallo.jpg",
   },
   {
     id: 2,
@@ -219,18 +220,29 @@ const cards = [
   },
 ];
 
-function random_item(cards) {
-  return cards[Math.floor(Math.random() * cards.length)];
-}
+// function random_item(cards) {
+//   return cards[Math.floor(Math.random() * cards.length)];
+// }
 
-console.log(random_item(cards));
+const randomItem = (cards) => {
+  return cards[Math.floor(Math.random() * cards.length)];
+};
+
+console.log(randomItem(cards));
 
 function makeRows(rows, cols) {
   container.style.setProperty("--grid-rows", rows);
   container.style.setProperty("--grid-cols", cols);
   for (c = 0; c < rows * cols; c++) {
+    // let cell = document.createElement("img");
     let cell = document.createElement("div");
-    cell.innerText = c + 1;
+    // cell.src = "../img/Gallo.jpg";
+    // cell.innerText = c + 1;
+
+    const { id, name } = randomItem(cards);
+
+    cell.innerHTML = `${id}. ${name}`;
+
     container.appendChild(cell).className = "grid-item";
   }
 }
