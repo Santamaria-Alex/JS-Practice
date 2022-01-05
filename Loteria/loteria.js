@@ -5,7 +5,13 @@ const card_number = document.getElementById("card-number");
 const card_name = document.getElementById("card-name");
 const card_image = document.getElementById("card-image");
 
-const cards = [
+const nextCard = document.getElementById("next");
+
+const deck_number = document.getElementById("deck-number");
+const deck_name = document.getElementById("deck-name");
+const deck_image = document.getElementById("deck-image");
+
+let cards = [
   {
     id: 1,
     name: "El Gallo",
@@ -281,7 +287,9 @@ const cards = [
 const randomItem = (cards) => {
   return cards[Math.floor(Math.random() * cards.length)];
 };
+console.log(randomItem(cards));
 
+//to make loteria board
 function makeRows(rows, cols) {
   container.style.setProperty("--grid-rows", rows);
   container.style.setProperty("--grid-cols", cols);
@@ -312,3 +320,52 @@ function makeRows(rows, cols) {
 }
 
 makeRows(4, 4);
+
+//to get next card from deck
+// nextCard.addEventListener("click", () => {
+//   if (!cards.length) return;
+//   //   let newDeck = cards.splice(randomItem(cards), 1);
+//   //   cards = cards.filter(card => person.name != 'John');
+//   //   let newDeck = cards.filter(randomItem());
+
+//   let cardRemoved = randomItem(cards);
+//   let newDeck = cards.splice(cardRemoved, 1);
+
+//   console.log(newDeck);
+
+//   const { id, name, photo } = randomItem(cards);
+//   deck_number.innerHTML = id;
+//   deck_name.innerHTML = name;
+//   deck_image.src = photo;
+// });
+
+nextCard.addEventListener("click", getNextCard);
+
+function getNextCard() {
+  if (!cards.length) return;
+  const randomIndex = Math.floor(Math.random() * cards.length);
+
+  for (var i = 0; i < cards.length; i++)
+    if (cards[i].id === randomIndex) {
+      cards.splice(i, 1);
+      break;
+    }
+
+  console.log(cards);
+  console.log(randomIndex);
+}
+// getNextCard();
+
+// document.querySelector("button").addEventListener("click", getNextCard);
+
+// const videoFns = Array.from(
+//   { length: 5 },
+//   (_, i) => () => console.log("video " + i)
+// );
+// function playNextVideo() {
+//   if (!videoFns.length) return;
+//   const randomIndex = Math.floor(Math.random() * videoFns.length);
+//   const [videoFn] = videoFns.splice(randomIndex, 1);
+//   videoFn();
+// }
+// document.querySelector("button").addEventListener("click", playNextVideo);
