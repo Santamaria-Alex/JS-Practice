@@ -6,16 +6,24 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: flex-start; */
+  /* justify-content: center; */
   height: 100vh;
   overflow: hidden;
-  margin: 0;
+  margin-left: 20px;
+  margin-right: -20px;
 }
 
 :root {
   --grid-cols: 1;
   --grid-rows: 1;
+}
+
+.big-container {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
 }
 
 .container {
@@ -32,8 +40,8 @@ body {
   text-align: center;
   padding: 0;
   border: 1px solid #ddd;
-  height: 200px;
-  width: 120px;
+  height: 180px;
+  width: 108px;
 }
 
 img {
@@ -44,8 +52,8 @@ img {
 }
 
 .card-container {
-  height: 200px;
-  width: 120px;
+  height: 100%;
+  width: 100%;
   position: relative;
 }
 
@@ -59,3 +67,24 @@ img {
   color: white;
   padding: 3px;
 }
+
+.deck-container {
+  height: 300px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+/* .deck-details {
+  z-index: 1;
+  position: relative;
+}
+
+.deck-name {
+  bottom: 0;
+}
+
+.deck-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
