@@ -133,8 +133,8 @@ const cards = [
   },
   {
     id: 26,
-    name: "El Negrito",
-    photo: "../img/Negrito.jpg",
+    name: "El webDev",
+    photo: "../img/WebDev.jpg",
   },
   {
     id: 27,
