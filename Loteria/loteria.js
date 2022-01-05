@@ -345,9 +345,16 @@ function getNextCard() {
   if (!cards.length) return;
   const randomIndex = Math.floor(Math.random() * cards.length);
 
-  for (var i = 0; i < cards.length; i++)
+  //   for(i=0; i<cards.length; i++){
+
+  //   }
+
+  for (var i = 1; i < cards.length; i++)
     if (cards[i].id === randomIndex) {
       cards.splice(i, 1);
+      deck_number.innerHTML = cards[i].id;
+      deck_name.innerHTML = cards[i].name;
+      deck_image.src = cards[i].photo;
       break;
     }
 
