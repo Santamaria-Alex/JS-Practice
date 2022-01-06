@@ -339,18 +339,44 @@ makeRows(4, 4);
 //   deck_image.src = photo;
 // });
 
+let deck = [];
+let cardLength = cards.length;
+console.log(cardLength);
+
+function generateUniqueRandom(maxNr) {
+  //Generate random number
+  let random = (Math.random() * maxNr).toFixed();
+  //   let random = Math.floor(Math.random() * cards.length);
+
+  //Coerce to number by boxing
+  random = Number(random);
+
+  if (!deck.includes(random)) {
+    deck.push(random);
+    return random;
+  } else {
+    if (deck.length < maxNr) {
+      //Recursively generate number
+      return generateUniqueRandom(maxNr);
+    } else {
+      console.log("No more cards available.");
+      return false;
+    }
+  }
+}
+
+console.log(generateUniqueRandom(cardLength));
+console.log("Unique random numbers:", deck);
+
+//////////
 nextCard.addEventListener("click", getNextCard);
 
 function getNextCard() {
   if (!cards.length) return;
-  const randomIndex = Math.floor(Math.random() * cards.length);
-
-  //   for(i=0; i<cards.length; i++){
-
-  //   }
+  //   const randomIndex = Math.floor(Math.random() * cards.length);
 
   for (var i = 1; i < cards.length; i++)
-    if (cards[i].id === randomIndex) {
+    if (cards[i].id === generateUniqueRandom(cardLength)) {
       cards.splice(i, 1);
       deck_number.innerHTML = cards[i].id;
       deck_name.innerHTML = cards[i].name;
@@ -359,7 +385,7 @@ function getNextCard() {
     }
 
   console.log(cards);
-  console.log(randomIndex + 1);
+  console.log(generateUniqueRandom(cardLength));
 }
 // getNextCard();
 
