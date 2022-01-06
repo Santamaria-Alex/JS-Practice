@@ -359,7 +359,7 @@ function getNextCard() {
     }
 
   console.log(cards);
-  console.log(randomIndex);
+  console.log(randomIndex + 1);
 }
 // getNextCard();
 
