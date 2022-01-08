@@ -339,9 +339,23 @@ makeRows(4, 4);
 //   deck_image.src = photo;
 // });
 
+var arr = [];
+for (var i = 0; i <= 24; i++) arr.push(i);
+function shuffle(arr) {
+  return arr
+    .map(function (val, i) {
+      return [Math.random(), i];
+    })
+    .sort()
+    .map(function (val) {
+      return val[1];
+    });
+}
+
+console.log(shuffle(arr)); //=> [2,10,15..] random array from 0 to 24
+
 let deck = [];
 let cardLength = cards.length;
-console.log(cardLength);
 
 function generateUniqueRandom(maxNr) {
   //Generate random number
@@ -365,8 +379,21 @@ function generateUniqueRandom(maxNr) {
   }
 }
 
-console.log(generateUniqueRandom(cardLength));
-console.log("Unique random numbers:", deck);
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log(generateUniqueRandom(cardLength));
+// console.log("Unique random numbers:", deck);
 
 //////////
 nextCard.addEventListener("click", getNextCard);
