@@ -139,3 +139,33 @@ img {
 .next:focus {
   outline: none;
 }
+
+.ex {
+  position: relative;
+  height: 100%; /* this can be anything */
+  width: 100%; /* ...but maintain 1:1 aspect ratio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ex::before,
+.ex::after {
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  content: "";
+  width: 100%;
+  height: 8px; /* cross thickness */
+  background-color: red;
+}
+
+.ex::before {
+  transform: rotate(45deg);
+}
+
+.ex::after {
+  transform: rotate(-45deg);
+}

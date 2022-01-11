@@ -302,6 +302,7 @@ function makeRows(rows, cols) {
     const card_block = `
 <div class="card-container" id="card-container">
     <div class="card-details" id="card-details">
+        <div class="ex" id="ex"></div>
         <div class="number" id="card-number">${id}</div>
         <div class="card-name" id="card-name">${name}</div>
     </div>
