@@ -4,9 +4,7 @@ const card_details = document.getElementById("card-details");
 const card_number = document.getElementById("card-number");
 const card_name = document.getElementById("card-name");
 const card_image = document.getElementById("card-image");
-
 const nextCard = document.getElementById("next");
-
 const deck_number = document.getElementById("deck-number");
 const deck_name = document.getElementById("deck-name");
 const deck_image = document.getElementById("deck-image");
@@ -287,7 +285,7 @@ let cards = [
 const randomItem = (cards) => {
   return cards[Math.floor(Math.random() * cards.length)];
 };
-console.log(randomItem(cards));
+// console.log(randomItem(cards));
 
 //to make loteria board
 function makeRows(rows, cols) {
@@ -313,8 +311,6 @@ function makeRows(rows, cols) {
 
     cell.innerHTML = card_block;
 
-    // cell.innerHTML = `${id}. ${name}`;
-
     container.appendChild(cell).className = "grid-item";
   }
 }
@@ -322,101 +318,21 @@ function makeRows(rows, cols) {
 makeRows(4, 4);
 
 //to get next card from deck
-// nextCard.addEventListener("click", () => {
-//   if (!cards.length) return;
-//   //   let newDeck = cards.splice(randomItem(cards), 1);
-//   //   cards = cards.filter(card => person.name != 'John');
-//   //   let newDeck = cards.filter(randomItem());
+const tests = Array.from({ length: cards.length }, (_, i) => () => {
+  console.log("card " + i);
+  deck_number.innerHTML = cards[i].id;
+  deck_name.innerHTML = cards[i].name;
+  deck_image.src = cards[i].photo;
+});
 
-//   let cardRemoved = randomItem(cards);
-//   let newDeck = cards.splice(cardRemoved, 1);
-
-//   console.log(newDeck);
-
-//   const { id, name, photo } = randomItem(cards);
-//   deck_number.innerHTML = id;
-//   deck_name.innerHTML = name;
-//   deck_image.src = photo;
-// });
-
-var arr = [];
-for (var i = 0; i <= 24; i++) arr.push(i);
-function shuffle(arr) {
-  return arr
-    .map(function (val, i) {
-      return [Math.random(), i];
-    })
-    .sort()
-    .map(function (val) {
-      return val[1];
-    });
+function getFollowingCard() {
+  if (!tests.length) return;
+  const randomIndex = Math.floor(Math.random() * tests.length);
+  const [test] = tests.splice(randomIndex, 1);
+  test();
 }
-
-console.log(shuffle(arr)); //=> [2,10,15..] random array from 0 to 24
-
-let deck = [];
-let cardLength = cards.length;
-
-function generateUniqueRandom(maxNr) {
-  //Generate random number
-  let random = (Math.random() * maxNr).toFixed();
-  //   let random = Math.floor(Math.random() * cards.length);
-
-  //Coerce to number by boxing
-  random = Number(random);
-
-  if (!deck.includes(random)) {
-    deck.push(random);
-    return random;
-  } else {
-    if (deck.length < maxNr) {
-      //Recursively generate number
-      return generateUniqueRandom(maxNr);
-    } else {
-      console.log("No more cards available.");
-      return false;
-    }
-  }
-}
-
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log(generateUniqueRandom(cardLength));
-// console.log("Unique random numbers:", deck);
-
-//////////
-nextCard.addEventListener("click", getNextCard);
-
-function getNextCard() {
-  if (!cards.length) return;
-  //   const randomIndex = Math.floor(Math.random() * cards.length);
-
-  for (var i = 1; i < cards.length; i++)
-    if (cards[i].id === generateUniqueRandom(cardLength)) {
-      cards.splice(i, 1);
-      deck_number.innerHTML = cards[i].id;
-      deck_name.innerHTML = cards[i].name;
-      deck_image.src = cards[i].photo;
-      break;
-    }
-
-  console.log(cards);
-  console.log(generateUniqueRandom(cardLength));
-}
-// getNextCard();
-
-// document.querySelector("button").addEventListener("click", getNextCard);
+// document.querySelector("button").addEventListener("click", getFollowingCard);
+nextCard.addEventListener("click", getFollowingCard);
 
 // const videoFns = Array.from(
 //   { length: 5 },
