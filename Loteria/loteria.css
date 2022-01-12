@@ -148,6 +148,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .ex::before,

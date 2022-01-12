@@ -8,6 +8,7 @@ const nextCard = document.getElementById("next");
 const deck_number = document.getElementById("deck-number");
 const deck_name = document.getElementById("deck-name");
 const deck_image = document.getElementById("deck-image");
+const ex = document.getElementById("ex");
 
 let cards = [
   {
@@ -292,9 +293,7 @@ function makeRows(rows, cols) {
   container.style.setProperty("--grid-rows", rows);
   container.style.setProperty("--grid-cols", cols);
   for (c = 0; c < rows * cols; c++) {
-    // let cell = document.createElement("img");
     let cell = document.createElement("div");
-    // cell.src = "../img/Gallo.jpg";
     // cell.innerText = c + 1;
 
     const { id, name, photo } = randomItem(cards);
@@ -302,7 +301,7 @@ function makeRows(rows, cols) {
     const card_block = `
 <div class="card-container" id="card-container">
     <div class="card-details" id="card-details">
-        <div class="ex" id="ex"></div>
+        <div id="ex" class="ex"></div>
         <div class="number" id="card-number">${id}</div>
         <div class="card-name" id="card-name">${name}</div>
     </div>
@@ -317,14 +316,17 @@ function makeRows(rows, cols) {
 }
 
 makeRows(4, 4);
+console.log(card_number.innerHTML);
 
 //to get next card from deck
-const tests = Array.from({ length: cards.length }, (_, i) => () => {
-  console.log("card " + i);
-  deck_number.innerHTML = cards[i].id;
-  deck_name.innerHTML = cards[i].name;
-  deck_image.src = cards[i].photo;
+const tests = Array.from({ length: cards.length }, (_, j) => () => {
+  console.log("card " + j);
+  deck_number.innerHTML = cards[j].id;
+  deck_name.innerHTML = cards[j].name;
+  deck_image.src = cards[j].photo;
 });
+
+// console.log(deck_number.innerHTML);
 
 function getFollowingCard() {
   if (!tests.length) return;
@@ -332,17 +334,20 @@ function getFollowingCard() {
   const [test] = tests.splice(randomIndex, 1);
   test();
 }
-// document.querySelector("button").addEventListener("click", getFollowingCard);
-nextCard.addEventListener("click", getFollowingCard);
 
-// const videoFns = Array.from(
-//   { length: 5 },
-//   (_, i) => () => console.log("video " + i)
-// );
-// function playNextVideo() {
-//   if (!videoFns.length) return;
-//   const randomIndex = Math.floor(Math.random() * videoFns.length);
-//   const [videoFn] = videoFns.splice(randomIndex, 1);
-//   videoFn();
+nextCard.addEventListener("click", getFollowingCard);
+// nextCard.addEventListener("click", () => {
+// //   ex.classList.add("ex");
+//   //   let exes = document.createElement("div");
+//   //   exes.classList.add("ex");
+//   //   card_container.appendChild(exes).className = "ex";
+//   //   ex.styleSheets[0].cssRules[0].style.removeProperty("display");
+
+//   //   if (id === deck_number.innerHTML) {
+//   //     ex.style.removeAttribute("display");
+//   //   }
+// });
+
+// function addEx() {
+//     if(cards[i] === )
 // }
-// document.querySelector("button").addEventListener("click", playNextVideo);
