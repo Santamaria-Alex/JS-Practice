@@ -316,7 +316,6 @@ function makeRows(rows, cols) {
 }
 
 makeRows(4, 4);
-console.log(card_number.innerHTML);
 
 //to get next card from deck
 const tests = Array.from({ length: cards.length }, (_, j) => () => {
