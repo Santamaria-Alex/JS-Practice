@@ -33,8 +33,6 @@ console.log(longest("aretheyhere", "yestheyarehere"));
 // ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
 // ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 function likes(names) {
-  // TODO
-
   console.log(names);
 
   if (names.length === 0) {
@@ -51,3 +49,20 @@ function likes(names) {
 }
 
 console.log(likes(["Alex", "Jacob", "Mark", "Max"]));
+
+//7kyu
+//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+//All numbers are valid Int32, no need to validate them.
+// There will always be at least one number in the input string.
+// Output string must be two numbers separated by a single space, and highest number is first.
+function highAndLow(numbers) {
+  const num = numbers.split(" ");
+
+  const high = Math.max(...num);
+  const low = Math.min(...num);
+
+  return `${high} ${low}`;
+}
+console.log(highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
+
+//testing
