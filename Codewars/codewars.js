@@ -89,3 +89,25 @@ function persistence(num) {
   return times;
 }
 console.log(persistence(39));
+
+//8kyu
+// Write a function that will check if two given characters are the same case.
+
+// If either of the characters is not a letter, return -1
+// If both characters are the same case, return 1
+// If both characters are letters, but not the same case, return 0
+function sameCase(a, b) {
+  const letter =
+    a.toUpperCase() !== a.toLowerCase() && b.toUpperCase() !== b.toLowerCase();
+  const upper = /^[A-Z]*$/.test(a) && /^[A-Z]*$/.test(b);
+  const lower = /^[a-z]*$/.test(a) && /^[a-z]*$/.test(b);
+
+  if (!letter) {
+    return -1;
+  } else if (upper || lower) {
+    return 1;
+  } else if ((letter && !upper) || !lower) {
+    return 0;
+  }
+}
+console.log(sameCase("a", "b"));
