@@ -111,3 +111,34 @@ function sameCase(a, b) {
   }
 }
 console.log(sameCase("a", "b"));
+/////////////////////////////////////////////////////////////////////////
+
+// function orderWeight(strng) {
+//   const num = strng.split(" ");
+//   const num2 = num.map(Number);
+
+//   const single = num.map((a) => a.split(""));
+
+//   for (let i = 0; i <= strng.length; i++) {
+//     const arr = single[i].map(Number);
+
+//     const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
+
+//     console.log(sum);
+//   }
+
+//   //   const sum = num2.reduce((partialSum, a) => partialSum + a, 0)
+
+//   console.log(strng);
+// }
+
+// orderWeight("103 123 4444 99 2000");
+
+/////////////////////////////////////////////////////////////////////////
+// /8kyu
+// Write a function that returns a string in which firstname is swapped with last name.
+// "john McClane" --> "McClane john"
+function nameShuffler(str) {
+  return str.split(" ").reverse().join(" ");
+}
+console.log(nameShuffler("alex Santamaria"));
