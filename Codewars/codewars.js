@@ -150,3 +150,25 @@ function sumMix(x) {
   return x.map(Number).reduce((a, b) => a + b);
 }
 console.log(sumMix([9, 3, "7", "3"]));
+////////////////////////////////////////////////////////////
+// Given an array of 3 non-negative integers a, b and c, determine if they form a pythagorean triple.
+// A pythagorean triple is formed when:
+// c2 = a2 + b2
+// where c is the largest value of a, b, c.
+// For example: a = 3, b = 4, c = 5 forms a pythagorean triple, because 52 = 32 + 42
+function isPythagoreanTriple(integers) {
+  const num = integers.sort(function (a, b) {
+    return a - b;
+  });
+
+  const c = num[2] ** 2;
+  const a = num[0] ** 2;
+  const b = num[1] ** 2;
+
+  if (c === a + b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isPythagoreanTriple([6, 8, 10]));
