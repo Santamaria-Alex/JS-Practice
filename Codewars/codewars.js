@@ -181,3 +181,10 @@ function smallEnough(a, limit) {
 function smallEnough(a, limit) {
   return a.every((x) => x <= limit);
 }
+//////////////////
+//8kyu
+//Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+function digitize(n) {
+  const x = Array.from(String(n), Number);
+  return x.reverse();
+}
