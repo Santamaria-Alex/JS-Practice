@@ -212,3 +212,9 @@ function even_or_odd(number) {
 function makeNegative(num) {
   return num > 0 ? num * -1 : num;
 }
+//////////
+//8kyu
+//Very simple, given an integer or a floating-point number, find its opposite.
+function opposite(number) {
+  return -number;
+}
