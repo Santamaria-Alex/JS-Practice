@@ -206,3 +206,9 @@ function positiveSum(arr) {
 function even_or_odd(number) {
   return number % 2 === 0 ? "Even" : "Odd";
 }
+////////
+//8kyu
+//In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+function makeNegative(num) {
+  return num > 0 ? num * -1 : num;
+}
