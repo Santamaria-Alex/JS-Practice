@@ -218,3 +218,9 @@ function makeNegative(num) {
 function opposite(number) {
   return -number;
 }
+////////7kyu
+//Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+function descendingOrder(n) {
+  const x = Array.from(String(n), Number).sort().reverse();
+  return +x.join("");
+}
