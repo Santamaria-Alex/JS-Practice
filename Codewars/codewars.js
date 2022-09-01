@@ -224,3 +224,8 @@ function descendingOrder(n) {
   const x = Array.from(String(n), Number).sort().reverse();
   return +x.join("");
 }
+/////////8kyu
+//Given a non-empty array of integers, return the result of multiplying the values together in order. Example:
+function grow(x) {
+  return x.sort().reduce((a, b) => a * b);
+}
