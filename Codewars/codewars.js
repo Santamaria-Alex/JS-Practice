@@ -229,3 +229,8 @@ function descendingOrder(n) {
 function grow(x) {
   return x.sort().reduce((a, b) => a * b);
 }
+//////8kyu
+//Complete the solution so that it reverses the string passed into it.
+function solution(str) {
+  return str.split("").reverse().join("");
+}
