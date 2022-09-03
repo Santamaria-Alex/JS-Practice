@@ -261,3 +261,10 @@ function isIsogram(str) {
 function typeValidation(variable, type) {
   return typeof variable === type;
 }
+//8kyu
+//Your mission is to implement a function that converts the following potentially harmful characters: (< --> &lt;) (> --> &gt;) (" --> &quot;)(& --> &amp;)
+function htmlspecialchars(formData) {
+  const chars = { "<": "&lt", ">": "&gt", '"': "&quot", "&": "&amp" };
+  formData = formData.replace(/[<>"&]/gi, (m) => chars[m] + ";");
+  return formData;
+}
