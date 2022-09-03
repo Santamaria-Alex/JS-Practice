@@ -268,3 +268,24 @@ function htmlspecialchars(formData) {
   formData = formData.replace(/[<>"&]/gi, (m) => chars[m] + ";");
   return formData;
 }
+function htmlspecialchars(formData) {
+  return formData
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+//7kyu
+//Write a function that produces an array with the numbers 0 to N-1 in it.
+//arr(5) // => [0,1,2,3,4]
+function arr(n) {
+  var newArr = [];
+  for (var i = 0; i < n; i++) {
+    newArr.push(i);
+  }
+  return newArr;
+}
+//7kyu//Given an integral number, determine if it's a square number:
+var isSquare = function (n) {
+  return Math.sqrt(n) % 1 === 0; //checks if n is complete number
+};
