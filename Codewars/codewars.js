@@ -289,3 +289,12 @@ function arr(n) {
 var isSquare = function (n) {
   return Math.sqrt(n) % 1 === 0; //checks if n is complete number
 };
+//8kyu
+//If the number has an integer square root, take this, otherwise square the number.
+//[4,3,9,7,2,1] -> [2,9,3,49,4,1]
+function squareOrSquareRoot(array) {
+  return array.map((x) => {
+    const r = Math.sqrt(x);
+    return r % 1 == 0 ? r : x * x;
+  });
+}
