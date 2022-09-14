@@ -315,3 +315,15 @@ function anagrams(word, words) {
     (x) => x.split("").sort().join("") === word.split("").sort().join("")
   );
 }
+//6kyu
+//Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+function digitalRoot(n) {
+  //not sure why this works but it does
+  //     console.log(n%9||9)
+  const sum = n
+    .toString()
+    .split("")
+    .map(Number)
+    .reduce((a, b) => a + b);
+  return sum >= 10 ? digitalRoot(sum) : sum;
+}
