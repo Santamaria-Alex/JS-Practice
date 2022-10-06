@@ -327,3 +327,17 @@ function digitalRoot(n) {
     .reduce((a, b) => a + b);
   return sum >= 10 ? digitalRoot(sum) : sum;
 }
+//8kyu
+//We need to write a function that takes this collection and returns the number of points our team (x) got in the championship by the rules given above.
+//if x > y: 3 points (win); if x < y: 0 points (loss) ; if x = y: 1 point (tie)
+function points(games) {
+  let total = 0;
+  for (let i = 0; i < games.length; i++) {
+    if (games[i][0] > games[i][2]) {
+      total += 3;
+    } else if (games[i][0] === games[i][2]) {
+      total += 1;
+    }
+  }
+  return total;
+}
