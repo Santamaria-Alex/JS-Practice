@@ -346,3 +346,9 @@ function points(games) {
 function boolToWord(bool) {
   return bool ? "Yes" : "No";
 }
+//8kyu
+//Write a function that checks if a given string (case insensitive) is a palindrome.
+function isPalindrome(x) {
+  const a = x.toLowerCase().split("").reverse().join("");
+  return x.toLowerCase() === a ? true : false;
+}
