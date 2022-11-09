@@ -377,3 +377,7 @@ function otherAngle(a, b) {
 function sumStr(a, b) {
   return (+a + +b).toString();
 }
+//8kyu : Now you have to write a function that takes an argument and returns the square of it.
+function square(x) {
+  return x * x;
+}
