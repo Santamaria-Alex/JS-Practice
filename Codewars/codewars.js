@@ -389,3 +389,8 @@ function invert(array) {
 function booleanToString(b) {
   return b ? "true" : "false";
 }
+//7kyu:: Debug   function getSumOfDigits that takes positive integer to calculate sum of its digits.
+function getSumOfDigits(integer) {
+  const num = Array.from(String(integer), Number);
+  return num.reduce((a, b) => a + b);
+}
