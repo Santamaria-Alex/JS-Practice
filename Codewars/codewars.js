@@ -394,3 +394,10 @@ function getSumOfDigits(integer) {
   const num = Array.from(String(integer), Number);
   return num.reduce((a, b) => a + b);
 }
+//7kyu: Write a program that outputs the top n elements from a list.
+function largest(n, arr) {
+  function compareNumbers(a, b) {
+    return a - b;
+  }
+  return n > 0 ? arr.sort(compareNumbers).slice(-n) : [];
+}
