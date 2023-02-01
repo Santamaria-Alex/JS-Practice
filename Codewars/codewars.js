@@ -385,3 +385,7 @@ function square(x) {
 function invert(array) {
   return array.map((x) => x * -1);
 }
+//8kyu Implement a function which convert the given boolean value into its string representation.
+function booleanToString(b) {
+  return b ? "true" : "false";
+}
