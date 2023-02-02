@@ -401,3 +401,11 @@ function largest(n, arr) {
   }
   return n > 0 ? arr.sort(compareNumbers).slice(-n) : [];
 }
+//7kyu: Your are given a string. You must replace any occurence of the sequence coverage by covfefe, however, if you don't find the word coverage in the string, you must add covfefe at the end of the string with a leading space.
+function covfefe(str) {
+  const x = str.split(" ");
+  const a = str.split(" ").join("").includes("coverage");
+  return a
+    ? x.map((a) => a.replace("coverage", "covfefe")).join(" ")
+    : str + " covfefe";
+}
